@@ -14,95 +14,101 @@
             color: #1e293b;
         }
 
-        /* 🗺️ NAVIGATION BAR (Flexbox Layout) */
+        /* 🗺️ NAVIGATION BAR */
         .navbar {
             display: flex;
-            justify-content: space-between; /* Pushes brand to left, links to right */
-            align-items: center;            /* Centers items vertically */
-            padding: 20px 10px;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
             background-color: #ffffff;
             border-bottom: 1px solid #e2e8f0;
         }
-        .nav-brand {
-            font-size: 20px;
-            font-weight: bold;
-            color: #ff4757;
-            text-decoration: none;
-        }
-        .nav-links a {
-            text-decoration: none;
-            color: #64748b;
-            margin-left: 20px;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-        .nav-links a:hover {
-            color: #1e293b;
-        }
+        .nav-brand { font-size: 20px; font-weight: bold; color: #ff4757; text-decoration: none; }
+        .nav-links a { text-decoration: none; color: #64748b; margin-left: 20px; font-weight: 500; }
 
         /* 🚀 HERO SECTION CONTAINER */
         .hero-container {
             max-width: 1100px;
             margin: 0 auto;
             padding: 60px 20px;
-            display: flex;                  /* Flexbox alignment */
-            flex-direction: row;            /* Side-by-side layout */
-            align-items: center;
-            gap: 40px;                      /* Spacing between columns */
-        }
-
-        /* Hero Left Column (Text Content) */
-        .hero-left {
-            flex: 1;                        /* Takes up 50% width */
-        }
-        .hero-left h1 {
-            font-size: 42px;
-            line-height: 1.2;
-            color: #0f172a;
-            margin-bottom: 20px;
-        }
-        .hero-left p {
-            font-size: 18px;
-            color: #475569;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-
-        /* Hero Right Column (Your Custom Card) */
-        .hero-right {
-            flex: 1;                        /* Takes up 50% width */
             display: flex;
-            justify-content: center;
+            flex-direction: row;
+            align-items: center;
+            gap: 40px;
         }
+        .hero-left { flex: 1; }
+        .hero-left h1 { font-size: 42px; line-height: 1.2; color: #0f172a; margin-bottom: 20px; }
+        .hero-left p { font-size: 18px; color: #475569; line-height: 1.6; margin-bottom: 30px; }
+        .hero-right { flex: 1; display: flex; justify-content: center; }
+        
         .card {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            width: 100%;
-            max-width: 350px;
-            border: 1px solid #e2e8f0;
+            background: white; padding: 30px; border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05); width: 100%; max-width: 350px; border: 1px solid #e2e8f0;
         }
-
-        /* Form Elements inside Card */
         form { text-align: left; }
         label { font-size: 12px; font-weight: bold; color: #64748b; display: block; margin-bottom: 5px; }
         input, textarea {
             width: 100%; padding: 10px; margin-bottom: 15px;
-            border: 1px solid #cbd5e1; border-radius: 6px;
-            box-sizing: border-box; font-family: inherit;
+            border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box; font-family: inherit;
         }
         .submit-btn {
             width: 100%; background-color: #ff4757; color: white;
-            border: none; padding: 12px; border-radius: 6px;
-            font-size: 16px; font-weight: bold; cursor: pointer;
+            border: none; padding: 12px; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer;
         }
 
-        /* 📱 RESPONSIVE DESIGN (Mobile Rule) */
+        /* 📊 CSS GRID SECTION */
+        .projects-section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px 80px 20px;
+        }
+        .section-title {
+            font-size: 28px;
+            color: #0f172a;
+            margin-bottom: 30px;
+        }
+        
+        /* The Grid Engine */
+        .grid-container {
+            display: grid;
+            /* Creates 3 columns that share space evenly (1 fraction each) */
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 24px; /* The gap between rows and columns */
+        }
+        
+        /* Grid Items */
+        .grid-item {
+            background-color: white;
+            padding: 24px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .grid-item:hover {
+            transform: translateY(-4px); /* Subtle lift effect on hover */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .grid-item h3 {
+            margin-top: 0;
+            color: #0f172a;
+            font-size: 20px;
+        }
+        .grid-item p {
+            color: #64748b;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        /* 📱 RESPONSIVE DESIGN (Mobile Rules) */
         @media (max-width: 768px) {
             .hero-container {
-                flex-direction: column;     /* Stacks layout vertically on small screens */
+                flex-direction: column;
                 text-align: center;
+            }
+            .grid-container {
+                /* On small screens, switch columns from 3 to a single stacking column */
+                grid-template-columns: 1fr; 
             }
         }
     </style>
@@ -119,7 +125,6 @@
     </nav>
 
     <main class="hero-container">
-        
         <section class="hero-left">
             <h1>Building Next-Gen Digital Experiences</h1>
             <p>Welcome to my development environment. I construct functional web applications, optimize automated pipelines, and configure live cloud systems from scratch.</p>
@@ -138,8 +143,26 @@
                 </form>
             </div>
         </section>
-
     </main>
+
+    <section class="projects-section">
+        <h2 class="section-title">Active Architecture Slots</h2>
+        
+        <div class="grid-container">
+            <div class="grid-item">
+                <h3>01 // Automated Systems</h3>
+                <p>Designing digital lead capturing systems and high-converting marketing landing infrastructure for local enterprise models.</p>
+            </div>
+            <div class="grid-item">
+                <h3>02 // Core Interfaces</h3>
+                <p>Building semantic layouts, dark mode components, and modular elements utilizing basic logic event controllers.</p>
+            </div>
+            <div class="grid-item">
+                <h3>03 // Cloud Operations</h3>
+                <p>Configuring lightning-fast global deployments using git repository listeners and production level edge hosting layers.</p>
+            </div>
+        </div>
+    </section>
 
 </body>
 </html>
