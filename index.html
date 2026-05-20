@@ -3,138 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nadeem's Launchpad</title>
+    <title>Nadeem's Hub</title>
     <style>
-        /* Base Colors (Light Mode) */
-        :root {
-            --bg-color: #f4f7f6;
-            --card-bg: white;
-            --text-main: #333333;
-            --text-sub: #666666;
-            --border-color: #dddddd;
-        }
-
-        /* Dark Mode Colors overrides */
-        [data-theme="dark"] {
-            --bg-color: #121212;
-            --card-bg: #1e1e1e;
-            --text-main: #ffffff;
-            --text-sub: #b3b3b3;
-            --border-color: #333333;
-        }
-
+        /* Global Settings */
         body {
-            font-family: Arial, sans-serif;
-            background-color: var(--bg-color);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+
+        /* 🗺️ NAVIGATION BAR (Flexbox Layout) */
+        .navbar {
+            display: flex;
+            justify-content: space-between; /* Pushes brand to left, links to right */
+            align-items: center;            /* Centers items vertically */
+            padding: 20px 10px;
+            background-color: #ffffff;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .nav-brand {
+            font-size: 20px;
+            font-weight: bold;
+            color: #ff4757;
+            text-decoration: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #64748b;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: #1e293b;
+        }
+
+        /* 🚀 HERO SECTION CONTAINER */
+        .hero-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            display: flex;                  /* Flexbox alignment */
+            flex-direction: row;            /* Side-by-side layout */
+            align-items: center;
+            gap: 40px;                      /* Spacing between columns */
+        }
+
+        /* Hero Left Column (Text Content) */
+        .hero-left {
+            flex: 1;                        /* Takes up 50% width */
+        }
+        .hero-left h1 {
+            font-size: 42px;
+            line-height: 1.2;
+            color: #0f172a;
+            margin-bottom: 20px;
+        }
+        .hero-left p {
+            font-size: 18px;
+            color: #475569;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        /* Hero Right Column (Your Custom Card) */
+        .hero-right {
+            flex: 1;                        /* Takes up 50% width */
             display: flex;
             justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            transition: background-color 0.3s ease; /* Makes color switch smooth */
         }
         .card {
-            background: var(--card-bg);
+            background: white;
             padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
             width: 100%;
             max-width: 350px;
-            transition: background-color 0.3s ease;
-            position: relative;
-        }
-        h1 { color: var(--text-main); margin-bottom: 5px; }
-        p { color: var(--text-sub); font-size: 16px; line-height: 1.5; }
-        
-        /* Toggle Button Styling */
-        .theme-toggle-btn {
-            background: none;
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            padding: 6px 12px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 12px;
-            margin-bottom: 15px;
-            font-weight: bold;
+            border: 1px solid #e2e8f0;
         }
 
-        /* Form Styling */
-        form {
-            margin-top: 20px;
-            text-align: left;
-        }
-        label {
-            font-size: 12px;
-            font-weight: bold;
-            color: var(--text-sub);
-            display: block;
-            margin-bottom: 5px;
-        }
+        /* Form Elements inside Card */
+        form { text-align: left; }
+        label { font-size: 12px; font-weight: bold; color: #64748b; display: block; margin-bottom: 5px; }
         input, textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid var(--border-color);
-            background-color: var(--card-bg);
-            color: var(--text-main);
-            border-radius: 6px;
-            box-sizing: border-box;
-            font-family: inherit;
+            width: 100%; padding: 10px; margin-bottom: 15px;
+            border: 1px solid #cbd5e1; border-radius: 6px;
+            box-sizing: border-box; font-family: inherit;
         }
-        button.submit-btn {
-            width: 100%;
-            background-color: #ff4757;
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
+        .submit-btn {
+            width: 100%; background-color: #ff4757; color: white;
+            border: none; padding: 12px; border-radius: 6px;
+            font-size: 16px; font-weight: bold; cursor: pointer;
+        }
+
+        /* 📱 RESPONSIVE DESIGN (Mobile Rule) */
+        @media (max-width: 768px) {
+            .hero-container {
+                flex-direction: column;     /* Stacks layout vertically on small screens */
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <button class="theme-toggle-btn" id="themeToggle">🌙 Dark Mode</button>
+    <nav class="navbar">
+        <a href="#" class="nav-brand">NS.Dev</a>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Projects</a>
+            <a href="#">Contact</a>
+        </div>
+    </nav>
 
-        <h1>Nadeem's Launchpad</h1>
-        <p>My first time experience and great with Gemini.</p>
+    <main class="hero-container">
         
-        <form action="https://formspree.io/f/mzdwdlaa" method="POST">
-            <label for="email">Your Email Address</label>
-            <input type="email" name="email" id="email" placeholder="name@example.com" required>
-            
-            <label for="message">Your Message</label>
-            <textarea name="message" id="message" rows="4" placeholder="Type your idea here..." required></textarea>
-            
-            <button type="submit" class="submit-btn">Send Message</button>
-        </form>
-    </div>
+        <section class="hero-left">
+            <h1>Building Next-Gen Digital Experiences</h1>
+            <p>Welcome to my development environment. I construct functional web applications, optimize automated pipelines, and configure live cloud systems from scratch.</p>
+        </section>
 
-    <script>
-        // 1. Find the button in the HTML using its ID
-        const toggleButton = document.getElementById('themeToggle');
+        <section class="hero-right">
+            <div class="card">
+                <form action="https://formspree.io/f/mzdwdlaa" method="POST">
+                    <label for="email">Launch a Project Request</label>
+                    <input type="email" name="email" id="email" placeholder="yourname@domain.com" required>
+                    
+                    <label for="message">Project Description</label>
+                    <textarea name="message" id="message" rows="4" placeholder="What system are we engineering?" required></textarea>
+                    
+                    <button type="submit" class="submit-btn">Send System Signal</button>
+                </form>
+            </div>
+        </section>
 
-        // 2. Listen for when a user clicks that button
-        toggleButton.addEventListener('click', () => {
-            // 3. Check if the page is currently in dark mode
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            
-            if (currentTheme === 'dark') {
-                // If dark, change it back to light mode
-                document.documentElement.removeAttribute('data-theme');
-                toggleButton.textContent = '🌙 Dark Mode';
-            } else {
-                // If light, activate dark mode theme values
-                document.documentElement.setAttribute('data-theme', 'dark');
-                toggleButton.textContent = '☀️ Light Mode';
-            }
-        });
-    </script>
+    </main>
 
 </body>
 </html>
