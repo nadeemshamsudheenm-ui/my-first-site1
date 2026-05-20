@@ -5,27 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nadeem's Launchpad</title>
     <style>
+        /* Base Colors (Light Mode) */
+        :root {
+            --bg-color: #f4f7f6;
+            --card-bg: white;
+            --text-main: #333333;
+            --text-sub: #666666;
+            --border-color: #dddddd;
+        }
+
+        /* Dark Mode Colors overrides */
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-main: #ffffff;
+            --text-sub: #b3b3b3;
+            --border-color: #333333;
+        }
+
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f7f6;
+            background-color: var(--bg-color);
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
+            transition: background-color 0.3s ease; /* Makes color switch smooth */
         }
         .card {
-            background: white;
+            background: var(--card-bg);
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             text-align: center;
             width: 100%;
             max-width: 350px;
+            transition: background-color 0.3s ease;
+            position: relative;
         }
-        h1 { color: #333; margin-bottom: 5px; }
-        p { color: #666; font-size: 16px; line-height: 1.5; }
+        h1 { color: var(--text-main); margin-bottom: 5px; }
+        p { color: var(--text-sub); font-size: 16px; line-height: 1.5; }
         
+        /* Toggle Button Styling */
+        .theme-toggle-btn {
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
         /* Form Styling */
         form {
             margin-top: 20px;
@@ -34,7 +68,7 @@
         label {
             font-size: 12px;
             font-weight: bold;
-            color: #555;
+            color: var(--text-sub);
             display: block;
             margin-bottom: 5px;
         }
@@ -42,14 +76,16 @@
             width: 100%;
             padding: 10px;
             margin-bottom: 15px;
-            border: 1px solid #ddd;
+            border: 1px solid var(--border-color);
+            background-color: var(--card-bg);
+            color: var(--text-main);
             border-radius: 6px;
-            box-sizing: border-box; /* Keeps fields perfectly aligned */
+            box-sizing: border-box;
             font-family: inherit;
         }
-        button {
+        button.submit-btn {
             width: 100%;
-            background-color: #ff4757; /* Your signature red */
+            background-color: #ff4757;
             color: white;
             border: none;
             padding: 12px;
@@ -57,16 +93,14 @@
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
-            transition: background 0.2s;
-        }
-        button:hover {
-            background-color: #e03d4f; /* Darkens slightly on hover */
         }
     </style>
 </head>
 <body>
 
     <div class="card">
+        <button class="theme-toggle-btn" id="themeToggle">🌙 Dark Mode</button>
+
         <h1>Nadeem's Launchpad</h1>
         <p>My first time experience and great with Gemini.</p>
         
@@ -77,9 +111,30 @@
             <label for="message">Your Message</label>
             <textarea name="message" id="message" rows="4" placeholder="Type your idea here..." required></textarea>
             
-            <button type="submit">Send Message</button>
+            <button type="submit" class="submit-btn">Send Message</button>
         </form>
     </div>
+
+    <script>
+        // 1. Find the button in the HTML using its ID
+        const toggleButton = document.getElementById('themeToggle');
+
+        // 2. Listen for when a user clicks that button
+        toggleButton.addEventListener('click', () => {
+            // 3. Check if the page is currently in dark mode
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            
+            if (currentTheme === 'dark') {
+                // If dark, change it back to light mode
+                document.documentElement.removeAttribute('data-theme');
+                toggleButton.textContent = '🌙 Dark Mode';
+            } else {
+                // If light, activate dark mode theme values
+                document.documentElement.setAttribute('data-theme', 'dark');
+                toggleButton.textContent = '☀️ Light Mode';
+            }
+        });
+    </script>
 
 </body>
 </html>
