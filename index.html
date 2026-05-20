@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Launchpad</title>
+    <title>Nadeem's Launchpad</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -20,18 +20,47 @@
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             text-align: center;
+            width: 100%;
             max-width: 350px;
         }
         h1 { color: #333; margin-bottom: 5px; }
         p { color: #666; font-size: 16px; line-height: 1.5; }
-        .badge {
-            background-color: #ff4757;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
+        
+        /* Form Styling */
+        form {
+            margin-top: 20px;
+            text-align: left;
+        }
+        label {
             font-size: 12px;
-            display: inline-block;
-            margin-top: 10px;
+            font-weight: bold;
+            color: #555;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box; /* Keeps fields perfectly aligned */
+            font-family: inherit;
+        }
+        button {
+            width: 100%;
+            background-color: #ff4757; /* Your signature red */
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background-color: #e03d4f; /* Darkens slightly on hover */
         }
     </style>
 </head>
@@ -39,8 +68,17 @@
 
     <div class="card">
         <h1>Nadeem's Launchpad</h1>
-        <p>My first time experience and great with gemini</p>
-        <span class="badge">System Launch Initialized</span>
+        <p>My first time experience and great with Gemini.</p>
+        
+        <form action="https://formspree.io/f/mzdwdlaa" method="POST">
+            <label for="email">Your Email Address</label>
+            <input type="email" name="email" id="email" placeholder="name@example.com" required>
+            
+            <label for="message">Your Message</label>
+            <textarea name="message" id="message" rows="4" placeholder="Type your idea here..." required></textarea>
+            
+            <button type="submit">Send Message</button>
+        </form>
     </div>
 
 </body>
