@@ -3,174 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nadeem's Hub</title>
-    <style>
-        /* Global Settings */
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #FDFD96;
-            color: #1e293b;
-        }
-
-        /* 🗺️ NAVIGATION BAR */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
-            background-color: #ffffff;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        .nav-brand { font-size: 20px; font-weight: bold; color: #ff4757; text-decoration: none; }
-        .nav-links a { text-decoration: none; color: #64748b; margin-left: 20px; font-weight: 500; }
-
-        /* 🚀 HERO SECTION CONTAINER */
-        .hero-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 60px 20px;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 40px;
-        }
-        .hero-left { flex: 1; }
-        .hero-left h1 { font-size: 42px; line-height: 1.2; color: #0f172a; margin-bottom: 20px; }
-        .hero-left p { font-size: 18px; color: #475569; line-height: 1.6; margin-bottom: 30px; }
-        .hero-right { flex: 1; display: flex; justify-content: center; }
-        
-        .card {
-            background: white; padding: 30px; border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05); width: 100%; max-width: 350px; border: 1px solid #e2e8f0;
-        }
-        form { text-align: left; }
-        label { font-size: 12px; font-weight: bold; color: #64748b; display: block; margin-bottom: 5px; }
-        input, textarea {
-            width: 100%; padding: 10px; margin-bottom: 15px;
-            border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box; font-family: inherit;
-        }
-        .submit-btn {
-            width: 100%; background-color: #ff4757; color: white;
-            border: none; padding: 12px; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer;
-        }
-
-        /* 📊 CSS GRID SECTION */
-        .projects-section {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 20px 80px 20px;
-        }
-        .section-title {
-            font-size: 28px;
-            color: #0f172a;
-            margin-bottom: 30px;
-        }
-        
-        /* The Grid Engine */
-        .grid-container {
-            display: grid;
-            /* Creates 3 columns that share space evenly (1 fraction each) */
-            grid-template-columns: repeat(3, 1fr); 
-            gap: 24px; /* The gap between rows and columns */
-        }
-        
-        /* Grid Items */
-        .grid-item {
-            background-color: white;
-            padding: 24px;
-            border-radius: 8px;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .grid-item:hover {
-            transform: translateY(-4px); /* Subtle lift effect on hover */
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-        .grid-item h3 {
-            margin-top: 0;
-            color: #0f172a;
-            font-size: 20px;
-        }
-        .grid-item p {
-            color: #64748b;
-            font-size: 15px;
-            line-height: 1.5;
-        }
-
-        /* 📱 RESPONSIVE DESIGN (Mobile Rules) */
-        @media (max-width: 768px) {
-            .navbar {
-        flex-direction: column; /* Stacks the brand name above the links */
-        gap: 10px;              /* Adds clean breathing room between them */
-            }
-            .hero-container {
-                flex-direction: column;
-                text-align: center;
-            }
-            .grid-container {
-                /* On small screens, switch columns from 3 to a single stacking column */
-                grid-template-columns: 1fr; 
-            }
-        }
-    </style>
+    <title>KIYOKA DIGITAL HUB</title>
+    <script src ="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-
-    <nav class="navbar">
-        <a href="#" class="nav-brand">KIYOKA DIGITAL</a>
-        <div class="nav-links">
-            <a href="#">Home</a>
-            <a href="#">Projects</a>
-            <a href="#">Contact</a>
+<body class="bg-[#FDFD96] text-slate-800 antialiased font-sans">
+    <nav class="flex justify-between items-center bg-white px-8 py-5 border-b border-slate-200">
+        <a href="#" class="text-xl font-bold text-red-500 tracking-wide">KIYOKA DIGITAL</a>
+        <div class="space-x-6 font-medium text-slate-500">
+            <a href="#" class="hover:text-slate-900 transition-colors">Home</a>
+            <a href="#" class="hover:text-slate-900 transition-colors">Services</a>
+            <a href="#" class="hover:text-slate-900 transition-colors">Contact</a>
+            <button class="bg-red-500 text-white px-4 py-2 rounded-md font-semibold hover:bg-red-600 transitions-colors">
+                GET STARTED
+            </button>   
         </div>
     </nav>
+    <section class="max-w-6xl mx-auto px-6 py-16 flex flex-col md:flex-row items-center gap-12">
+    
+    <div class="flex-1 text-center md:text-left">
+        <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
+            We Build High-Converting <span class="text-red-500">Digital Engines</span>
+        </h1>
+        <p class="mt-6 text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl">
+         Local SEO Optimization, Web Development, and Digital Marketing Solutions.
+        </p>
+    </div>
 
-    <main class="hero-container">
-        <section class="hero-left">
-            <h1>Building Next-Gen Digital Experiences</h1>
-            <p>Welcome to my development environment. I construct functional web applications, optimize automated pipelines, and configure live cloud systems from scratch.</p>
-        </section>
-
-        <section class="hero-right">
-            <div class="card">
-                <form action="https://formspree.io/f/mzdwdlaa" method="POST">
-                    <label for="email">Launch a Project Request</label>
-                    <input type="email" name="email" id="email" placeholder="yourname@domain.com" required>
-                    
-                    <label for="message">Project Description</label>
-                    <textarea name="message" id="message" rows="4" placeholder="What system are we engineering?" required></textarea>
-                    
-                    <button type="submit" class="submit-btn">Send System Signal</button>
-                </form>
-            </div>
-        </section>
-    </main>
-
-    <section class="projects-section">
-        <h2 class="section-title">Active Architecture Slots</h2>
-        
-        <div class="grid-container">
-            <div class="grid-item">
-                <h3>01 // Automated Systems</h3>
-                <p>Designing digital lead capturing systems and high-converting marketing landing infrastructure for local enterprise models.</p>
-            </div>
-            <div class="grid-item">
-                <h3>02 // Core Interfaces</h3>
-                <p>Building semantic layouts, dark mode components, and modular elements utilizing basic logic event controllers.</p>
-            </div>
-            <div class="grid-item">
-                <h3>03 // Cloud Operations</h3>
-                <p>Configuring lightning-fast global deployments using git repository listeners and production level edge hosting layers.</p>
-            </div>
-            <div class="grid-item">
-                <h3>04 // Data Pipelines</h3>
-                <p>Constructing data collection and processing pipelines for real-time analytics, user behavior tracking, and performance monitoring.</p>       
+    <div class="flex-1 flex justify-center w-full">
+        <div class="bg-white p-8 rounded-2xl shadow-xl border border-slate-100 max-w-md w-full">
+            <h3 class="text-xl font-bold text-slate-900 mb-2">Deploy Your Brand</h3>
+            <p class="text-slate-500 text-sm mb-6">Enter your email to sync your first digital optimization strategy with us.</p>
+            
+            <div class="space-y-4">
+                <input id="userEmail" type="email" placeholder="Enter your email" class="w-full px-4 py-3 border border-slate-200 rounded-lg focus:outline-none focus:border-red-500 bg-slate-50">
+                <button id="StrategyBtn" class="w-full bg-slate-900 text-white font-semibold py-3 rounded-lg hover:bg-slate-800 transition-colors shadow-md">
+                    Initialize Strategy
+                </button>
             </div>
         </div>
-    </section>
+    </div>
 
+</section>
+<script>
+        // 1. Locate the UI elements in the browser DOM
+        const emailInput = document.getElementById('userEmail');
+        const actionButton = document.getElementById('strategyBtn');
+
+        // 2. Set up the trigger mechanism
+        actionButton.addEventListener('click', () => {
+            const emailValue = emailInput.value.trim();
+
+            // 3. Simple input validation logic
+            if (emailValue === "") {
+                alert("Please enter a valid email address to initialize the system.");
+            } else {
+                // 4. Fire the success event loop
+                alert(`Strategy Initialized successfully for: ${emailValue}! Kiyoka Digital will sync with you shortly.`);
+                
+                // Clear the input box automatically after submission
+                emailInput.value = "";
+            }
+        });
+    </script>
 </body>
 </html>
