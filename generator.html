@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiyoka Script Engine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen font-sans">
+
+    <header class="border-b border-slate-800 bg-slate-950 px-8 py-4 flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+            <span class="text-red-500 font-black tracking-wider text-lg">KIYOKA ENGINE</span>
+            <span class="bg-slate-800 text-slate-400 text-xs px-2 py-1 rounded font-mono">v1.0 // Content Automation</span>
+        </div>
+        <a href="index.html" class="text-sm text-slate-400 hover:text-white transition-colors">← Back to Public Site</a>
+    </header>
+
+    <main class="max-w-6xl mx-auto p-6 grid grid-cols-1 lg:grid-cols-2 gap-8">
+        
+        <section class="bg-slate-950 p-6 rounded-xl border border-slate-800 space-y-6">
+            <h2 class="text-xl font-bold text-white border-b border-slate-800 pb-3">Script Parameters</h2>
+            
+            <div>
+                <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">Video Topic / Core Hook</label>
+                <input id="topicInput" type="text" placeholder="e.g., 3 Hidden Tech Secrets Making Teenagers Rich" class="w-full bg-slate-900 border border-slate-800 rounded-lg p-3 text-white focus:outline-none focus:border-red-500">
+            </div>
+
+            <div>
+                <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">Narrative Style</label>
+                <select id="styleSelect" class="w-full bg-slate-900 border border-slate-800 rounded-lg p-3 text-white focus:outline-none focus:border-red-500">
+                    <option value="fast">Fast-Paced / Retention Focused (Shorts/Reels)</option>
+                    <option value="docu">Documentary Style / Deep Dive (Long-form)</option>
+                    <option value="story">Story-Driven / High Suspense</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">Raw Value Points (One per line)</label>
+                <textarea id="pointsInput" rows="5" placeholder="Point 1: AI tools are free but hidden&#10;Point 2: Arbitrage models scale fast&#10;Point 3: Automate the delivery loop" class="w-full bg-slate-900 border border-slate-800 rounded-lg p-3 text-white focus:outline-none focus:border-red-500 font-mono text-sm"></textarea>
+            </div>
+
+            <button id="compileBtn" class="w-full bg-red-600 text-white font-bold py-3 rounded-lg hover:bg-red-500 transition-colors shadow-lg shadow-red-900/20">
+                Compile Production Blueprint
+            </button>
+        </section>
+
+        <section class="flex flex-col space-y-4">
+            <div class="flex justify-between items-center">
+                <h2 class="text-xl font-bold text-white">Production Script Output</h2>
+                <span class="text-xs font-mono text-slate-500">Auto-Formatted Grid</span>
+            </div>
+            
+            <div id="outputCanvas" class="bg-slate-950 border border-slate-800 rounded-xl p-6 flex-1 min-h-[400px] font-mono text-xs overflow-y-auto space-y-4 text-slate-400">
+                <div class="text-center text-slate-600 py-20">[ Waiting for script compilation parameters... ]</div>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>
