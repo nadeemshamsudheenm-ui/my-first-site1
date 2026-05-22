@@ -47,9 +47,11 @@
 
         <section class="flex flex-col space-y-4">
             <div class="flex justify-between items-center">
-                <h2 class="text-xl font-bold text-white">Production Script Output</h2>
-                <span class="text-xs font-mono text-slate-500">Auto-Formatted Grid</span>
-            </div>
+    <h2 class="text-xl font-bold text-white">Production Script Output</h2>
+    <button id="copyBtn" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-mono text-xs px-3 py-1.5 rounded-md border border-slate-700 transition-colors hidden">
+        📋 Copy Raw Text
+    </button>
+</div>
             
             <div id="outputCanvas" class="bg-slate-950 border border-slate-800 rounded-xl p-6 flex-1 min-h-[400px] font-mono text-xs overflow-y-auto space-y-4 text-slate-400">
                 <div class="text-center text-slate-600 py-20">[ Waiting for script compilation parameters... ]</div>
