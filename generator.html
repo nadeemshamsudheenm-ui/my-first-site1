@@ -57,6 +57,81 @@
         </section>
 
     </main>
+<script>
+        // 1. Get references to our control panel inputs and output canvas
+        const topicInput = document.getElementById('topicInput');
+        const styleSelect = document.getElementById('styleSelect');
+        const pointsInput = document.getElementById('pointsInput');
+        const compileBtn = document.getElementById('compileBtn');
+        const outputCanvas = document.getElementById('outputCanvas');
 
+        // 2. Set up click action listener
+        compileBtn.addEventListener('click', () => {
+            const topic = topicInput.value.trim();
+            const style = styleSelect.value;
+            const pointsText = pointsInput.value.trim();
+
+            // Simple validation guard rail
+            if (topic === "" || pointsText === "") {
+                alert("Please fill in the Topic and supply some Raw Value Points first.");
+                return;
+            }
+
+            // Split raw input text by lines to handle bullet points individually
+            const lines = pointsText.split('\n').filter(line => line.trim() !== "");
+
+            // 3. Define Hook templates based on chosen narrative speed style
+            let hookLine = "";
+            let pacingNote = "";
+            if (style === "fast") {
+                hookLine = `[0-3s HOOK]: "Stop scrolling. If you don't understand how ${topic} works right now, you're falling behind."`;
+                pacingNote = "FAST PACED // 140 WPM // BOOMERANG CUTS";
+            } else if (style === "docu") {
+                hookLine = `[0-15s HOOK]: "This is the reality of ${topic}. An underlying asset shift that most people won't recognize until it's too late."`;
+                pacingNote = "DOCUMENTARY // CINEMATIC pacing // DEEP LOWER THIRDS";
+            } else {
+                hookLine = `[0-10s HOOK]: "They wanted to keep ${topic} hidden. Here is exactly how the system unfolded."`;
+                pacingNote = "SUSPENSEFUL SLOW BURN // HIGH DRAMA AUDIO";
+            }
+
+            // 4. Generate the structured blueprint layout blocks
+            let compiledHTML = `
+                <div class="border border-red-900/40 bg-red-950/20 p-4 rounded-lg mb-4 text-slate-300">
+                    <span class="text-red-400 font-bold block mb-1">🎬 METADATA & CONTROL PACK</span>
+                    <p><strong class="text-slate-400">Pacing Strategy:</strong> ${pacingNote}</p>
+                </div>
+
+                <div class="border border-slate-800 bg-slate-900/60 p-4 rounded-lg mb-4 text-emerald-400 font-bold">
+                    ${hookLine}
+                </div>
+                
+                <h3 class="text-white font-bold text-sm mb-2 uppercase tracking-wider text-slate-400">📝 Body Core Segments</h3>
+                <div class="space-y-3">
+            `;
+
+            // Loop through each value bullet point dynamically and format into a production grid layout line
+            lines.forEach((point, index) => {
+                compiledHTML += `
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 border border-slate-800 bg-slate-900/40 p-3 rounded-lg">
+                        <div class="text-slate-500 font-bold">[ SEGMENT 0${index + 1} ]</div>
+                        <div class="text-slate-300 md:col-span-2">
+                            <span class="text-red-400/80 block text-[10px] uppercase font-bold tracking-widest">Audio / Voiceover Script</span>
+                            "${point.trim()}"
+                        </div>
+                    </div>
+                `;
+            });
+
+            compiledHTML += `
+                </div>
+                <div class="mt-4 border border-blue-900/40 bg-blue-950/20 p-4 rounded-lg text-blue-400 font-bold">
+                    [🚀 CTA / OUTRO]: "Drop a follow to lock into the Kiyoka pipeline. Link in bio to optimize your systems."
+                </div>
+            `;
+
+            // 5. Inject the newly compiled structure string directly onto our target preview section
+            outputCanvas.innerHTML = compiledHTML;
+        });
+    </script>
 </body>
 </html>
