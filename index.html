@@ -45,23 +45,46 @@
 
 </section>
 <script>
-        // 1. Locate the UI elements in the browser DOM
         const emailInput = document.getElementById('userEmail');
         const actionButton = document.getElementById('strategyBtn');
 
-        // 2. Set up the trigger mechanism
-        actionButton.addEventListener('click', () => {
+        actionButton.addEventListener('click', async () => {
             const emailValue = emailInput.value.trim();
 
-            // 3. Simple input validation logic
+            // 1. Basic validation check
             if (emailValue === "") {
                 alert("Please enter a valid email address to initialize the system.");
-            } else {
-                // 4. Fire the success event loop
-                alert(`Strategy Initialized successfully for: ${emailValue}! Kiyoka Digital will sync with you shortly.`);
-                
-                // Clear the input box automatically after submission
-                emailInput.value = "";
+                return;
+            }
+
+            // 2. Change button visual state to show processing
+            actionButton.innerText = "Syncing System...";
+            actionButton.disabled = true;
+
+            try {
+                // 3. Fire background network request to Formspree API
+                // REPLACE THE URL BELOW WITH YOUR ACTUAL FORMSPREE LINK
+                const response = await fetch("https://formspree.io/f/mnjrvnap", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ email: emailValue })
+                });
+
+                // 4. Handle response logic
+                if (response.ok) {
+                    alert(`System Signal Sent! Strategy initialized for: ${emailValue}. Check your inbox.`);
+                    emailInput.value = ""; // Reset input field
+                } else {
+                    alert("System transmission failed. Please try again.");
+                }
+            } catch (error) {
+                alert("Network timeout. Check your connectivity connection.");
+            } finally {
+                // 5. Restore button state
+                actionButton.innerText = "Initialize Strategy";
+                actionButton.disabled = false;
             }
         });
     </script>
