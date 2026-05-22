@@ -152,6 +152,39 @@
                 alert("Failed to write data packet to local clipboard access engine.");
             }
         });
+        // 3. 💾 AUTO-SAVE STATE CONTROLLER (localStorage)
+        
+        // Function to save current text inputs into browser memory
+        const syncInputsToMemory = () => {
+            localStorage.setItem('kiyoka_saved_topic', topicInput.value);
+            localStorage.setItem('kiyoka_saved_points', pointsInput.value);
+            localStorage.setItem('kiyoka_saved_style', styleSelect.value);
+        };
+
+        // Event listeners to detect whenever the user types or changes a setting
+        topicInput.addEventListener('input', syncInputsToMemory);
+        pointsInput.addEventListener('input', syncInputsToMemory);
+        styleSelect.addEventListener('change', syncInputsToMemory);
+
+        // Function to reload data from browser memory when the page boot up
+        const loadSavedDataFromMemory = () => {
+            const savedTopic = localStorage.getItem('kiyoka_saved_topic');
+            const savedPoints = localStorage.getItem('kiyoka_saved_points');
+            const savedStyle = localStorage.getItem('kiyoka_saved_style');
+
+            // If saved data exists, inject it back into the interface fields
+            if (savedTopic !== null) topicInput.value = savedTopic;
+            if (savedPoints !== null) pointsInput.value = savedPoints;
+            if (savedStyle !== null) styleSelect.value = savedStyle;
+            
+            // If there was a saved script, auto-compile it so the screen isn't empty
+            if (savedTopic || savedPoints) {
+                compileBtn.click();
+            }
+        };
+
+        // Execute the memory load sequence the exact moment the script finishes initialization
+        loadSavedDataFromMemory();
     </script>
 </body>
 </html>
